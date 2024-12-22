@@ -19,7 +19,7 @@ def post_detail(request, id):
     # Получаем публикацию по первичному ключу
     post = get_object_or_404(Post, id=id, is_published=True,
                              pub_date__lte=timezone.now())
-    
+
     if post.category and not post.category.is_published:
         # Если категория не опубликована, возвращаем 404
         raise Http404("Категория этого поста снята с публикации.")
